@@ -2,7 +2,8 @@ import jwt from 'jsonwebtoken';
 import env from '../config/env.js';
 
 function signToken(payload) {
-    return jwt.sign(payload, env.jwtSecret, {expiresIn: env.jwtExpiresIn})
+    console.log(env.expiry);
+    return jwt.sign(payload, env.jwtSecret, {expiresIn: env.expiry})
 }
 
 function verifyToken(token) {
@@ -10,7 +11,7 @@ function verifyToken(token) {
 }
 
 const cookieOptions = {
-    httpsOnly: true,
+    httpOnly: true,
     secure: env.isPro,
     sameSite: env.isPro ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60* 1000,
