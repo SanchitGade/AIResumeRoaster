@@ -11,7 +11,19 @@ const validate =
       );
     }
 
-    req[source] = result.data;
+    switch (source) {
+      case "query":
+        Object.assign(req.query, result.data);
+        break;
+
+      case "params":
+        req.params = result.data;
+        break;
+
+      default:
+        req[source] = result.data;
+    }
+
     next();
   };
 
