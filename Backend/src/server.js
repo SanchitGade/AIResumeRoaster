@@ -8,6 +8,10 @@ import healthRouter from "./routes/health.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 import authRouter from "./routes/auth.js";
 import resumeRouter from "./routes/resume.js";
+import dashboardRouter from "../src/routes/dashboard.js";
+import insightsRouter from "../src/routes/insights.js";
+import versionRouter from "../src/routes/version.js";
+import historyRouter from "../src/routes/history.js";
 
 const app = express();
 
@@ -28,6 +32,10 @@ if (!env.isPro) app.use(morgan("dev"));
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/resumes", resumeRouter);
+app.use("/api/dashboard", dashboardRouter);
+app.use("/api/insights", insightsRouter);
+app.use("/api/versions", versionRouter);
+app.use("/api/history", historyRouter);
 
 app.use(notFound);
 app.use(errorHandler);
