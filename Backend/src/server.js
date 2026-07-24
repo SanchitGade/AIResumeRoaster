@@ -19,7 +19,10 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: true,
+    origin: [
+      "http://localhost:5173",
+      "https://ai-resume-roaster-beta.vercel.app",
+    ],
     credentials: true,
   }),
 );
